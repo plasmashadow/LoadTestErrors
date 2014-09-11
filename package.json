@@ -1,0 +1,19 @@
+{
+  "name": "synclioloadtest",
+  "version": "0.0.0",
+  "description": "test suite",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "sathyanarrayanan",
+  "license": "ISC",
+  "dependencies":
+  {
+  	"nodeload":"0.4.0",
+  	"socket.io":"1.1.0",
+  	"socket.io-client":"1.1.0",
+  	"request":"2.42.0",
+  	"webworker-threads":"0.5.1"
+  }
+}
