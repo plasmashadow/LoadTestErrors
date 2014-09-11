@@ -16,7 +16,7 @@ io.on('connection', function(socket){
 and then i tried to connect the server sockets with above script.
 
 
-
+```
 =======poster.js==========
 function SocketConnection()
 {  
