@@ -5,7 +5,7 @@ errors encountered at load test..
 
 I have modified some code on the server to prompt the number of users connected at the time.
 
-```
+```js
 var counter=0;
 io.on('connection', function(socket){
   winston.info('User connected');
@@ -16,7 +16,7 @@ io.on('connection', function(socket){
 and then i tried to connect the server sockets with above script.
 
 
-```
+```js
 =======poster.js==========
 function SocketConnection()
 {  
