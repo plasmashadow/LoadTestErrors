@@ -163,7 +163,8 @@ function printconnectiontimes()
 function printAllMessageDetails()
 {
   var sheet=Log.createSheet('Message times',2000,2000);	
-  sheet.set(1,1,'SOCKET_ID'); var std=2;
+  sheet.set(1,1,'SOCKET_ID'); 
+  var std=2;
   //print coloums
   var maxcolsize=getMaxNumber();
   i=maxcolsize+1;

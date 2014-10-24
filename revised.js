@@ -4,6 +4,7 @@ var sockethash={};  //stores client number and socket number
 var timehash={};   //stores socket and token id
 var messagehash={};
 var sockofsock={};
+var sockandtime={};
 var count=1;
 var first=false;
 var frs,lrt;
@@ -23,7 +24,15 @@ function getMaxNumber()
 }
 function Kick()
 {
-   var socket=io("http://107.167.181.203:3000",{'force new connection':true});	
+   var socket=io.connect("http://107.167.181.203:3000",{"force new connection":true,
+   "transports":[
+    'websocket',
+    'flashsocket',
+    'htmlfile',
+    'xhr-polling',
+   'jsonp-polling'    
+   ]
+});	
    socket.on('connect',function(){
 	      if(!first)
 	      {
@@ -39,6 +48,7 @@ function Kick()
 	       // console.log(frs-lrt);
 	        sockethash[data.id]=data.token;
 	        timehash[data.id]=new Date().getTime()-data.time;
+	        sockandtime[data.id]=new Date().getTime();
 	        sockofsock[data.id]=[];
 	        //sockofsock[data.id].push(timehash[data.id]);
 	        socket.emit('message',{"count":0,"time":new Date().getTime()});
@@ -49,6 +59,13 @@ function Kick()
 		// console.log(sockofsock);
 		 socket.emit('message',{"count":data.count,"time":new Date().getTime()});
 	   });
+}
+function printsocktime()
+{
+ for(var key in sockethash)
+ {
+    console.log(key +"      "+sockandtime[key]);	 
+ }	
 }
 function printaveragetimes()
 {
@@ -155,6 +172,7 @@ setInterval(function(){
 	  //  console.log(sockofsock);
 	    //printAlldata();
 	    printMessageHash();
+	    printsocktime();
 	    process.exit(1); 
 	 }
 console.log("       "+seconds+"              |"+"       "+temp+"      ");
